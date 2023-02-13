@@ -1,30 +1,37 @@
 {
-    "name": "ecommerce_bot",
-    "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
-    "engines": {
-        "node": "16.x"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node app.js",
-        "devstart": "nodemon app.js",
-        "prettier": "prettier --ignore-path .prettierignore --config prettier.config.js --write .",
-        "quickpush": "cls && git status && git add * && git commit * -m \"Updated Code\" && git push"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "dotenv": "^16.0.3",
-        "express": "^4.18.1",
-        "pdfkit": "^0.13.0",
-        "request": "^2.88.2",
-        "whatsappcloudapi_wrapper": "^1.0.11",
-        "mysql":  "^2.18.1"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.20"
-    }
+  "name": "ecommerce_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "engines": {
+    "node": "16.x"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "devstart": "node app.js",
+    "build-babel": "babel -d ./dist ./src -s",
+    "start": "npm run build-babel && node ./dist/index.js",
+    "prettier": "prettier --ignore-path .prettierignore --config prettier.config.js --write .",
+    "quickpush": "cls && git status && git add * && git commit * -m \"Updated Code\" && git push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "pdfkit": "^0.13.0",
+    "request": "^2.88.2",
+    "whatsappcloudapi_wrapper": "^1.0.11",
+    "mysql": "^2.18.1",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/node": "^7.20.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

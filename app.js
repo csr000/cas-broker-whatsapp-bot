@@ -1,10 +1,15 @@
 // process.env = require('./sample.env.js')(process.env.NODE_ENV || 'development');
-require('dotenv').config()
+// require('dotenv').config()
+import express from "express";
+import dotenv from "dotenv"
+import indexRoutes from "./routes/index.js"
+
+dotenv.config()
+
 const port = process.env.PORT || 9000;
 console.log("process.env.PORT", process.env.PORT)
-const express = require('express');
 
-let indexRoutes = require('./routes/index.js');
+// let  = require('./routes/index.js');
 
 const main = async () => {
     const app = express();
