@@ -9,8 +9,6 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "devstart": "node app.js",
     "build-babel": "babel -d ./dist ./src -s",
     "start": "npm run build-babel && node ./dist/index.js",
     "prettier": "prettier --ignore-path .prettierignore --config prettier.config.js --write .",
