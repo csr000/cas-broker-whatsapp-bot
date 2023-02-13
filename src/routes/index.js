@@ -4,7 +4,7 @@ import Whatsapp from '../config/whatsapp';
 import connection from '../config/db';
 import testWaCallbackUrl from '../helpers/testWaCallbackUrl';
 import getRate from '../functions/getRate';
-import selectDestination from '../functions/getRate/SelectDestination';
+import selectDestination from '../functions/getRate/selectDestination';
 import selectPickup from '../functions/getRate/selectPickup';
 import selectContainerType from '../functions/getRate/selectContainerType';
 import selectContainerNum from '../functions/getRate/selectContainerNum';
