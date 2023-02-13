@@ -4,6 +4,8 @@ const port = process.env.PORT || 9000;
 console.log("process.env.PORT", process.env.PORT)
 const express = require('express');
 
+import indexRoutes from './routes'
+
 let indexRoutes = require('./routes/index.js');
 
 const main = async () => {
