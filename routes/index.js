@@ -1,15 +1,15 @@
 'use strict';
-import Whatsapp from '../config/whatsapp.js';
-import connection from '../config/db.js';
-import testWaCallbackUrl from '../helpers/testWaCallbackUrl.js';
-import getRate from '../functions/getRate/index.js';
-import selectDestination from '../functions/getRate/selectDestination.js';
-import selectPickup from '../functions/getRate/selectPickup.js';
-import selectContainerType from '../functions/getRate/selectContainerType.js';
-import selectContainerNum from '../functions/getRate/selectContainerNum.js';
-import express from "express"
 
-const router = express.Router();
+import Whatsapp from '../config/whatsapp';
+import connection from '../config/db';
+import testWaCallbackUrl from '../helpers/testWaCallbackUrl';
+import getRate from '../functions/getRate';
+import selectDestination from '../functions/getRate/SelectDestination';
+import selectPickup from '../functions/getRate/selectPickup';
+import selectContainerType from '../functions/getRate/selectContainerType';
+import selectContainerNum from '../functions/getRate/selectContainerNum';
+
+const router = require('express').Router();
 
 router.get('/meta_wa_callbackurl', (req, res) => {
     try {
