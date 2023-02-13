@@ -2,6 +2,7 @@
 // require('dotenv').config()
 import express from "express";
 import dotenv from "dotenv"
+
 import indexRoutes from "./routes"
 
 dotenv.config()
@@ -12,6 +13,7 @@ console.log("process.env.PORT", process.env.PORT)
 // import indexRoutes from './routes'
 
 // let indexRoutes = require('./routes/index.js');
+
 
 const main = async () => {
     const app = express();
