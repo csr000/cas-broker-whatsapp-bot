@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "engines": {
     "node": "16.x"
   },
+  "module": "commonjs",  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-babel": "babel -d ./dist ./src -s",
-    "start": "npm run build-babel && node ./dist/app.js",
+    "start": "node --experimental-specifier-resolution=node src/app.js",
     "prettier": "prettier --ignore-path .prettierignore --config prettier.config.js --write .",
     "quickpush": "cls && git status && git add * && git commit * -m \"Updated Code\" && git push"
   },

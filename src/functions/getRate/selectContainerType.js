@@ -1,6 +1,5 @@
 'use strict';
 import Whatsapp from '../../config/whatsapp';
-import { stcAction } from '../../routes';
 
 export default async function selectContainerType(typeOfMsg, incomingMessage, recipientPhone, message_id, res) {
 
@@ -21,4 +20,22 @@ export default async function selectContainerType(typeOfMsg, incomingMessage, re
     return res.sendStatus(200);
   }
 
+}
+
+function stcAction(message, recipientPhone) {
+  let flag = 0;
+  connection.query(
+      `UPDATE whatsapp_cloud SET container_type = '${message}' WHERE phone_no = '${recipientPhone}';`,
+      (err, res, fields) => {
+          if (err) flag = 1;
+      }
+  );
+
+  connection.query(
+      `UPDATE whatsapp_cloud SET latest_question = 'number of containers' WHERE phone_no = '${recipientPhone}';`,
+      (err, res, fields) => {
+          if (err) flag = 1;
+      }
+  );
+  return !Boolean(flag);
 }

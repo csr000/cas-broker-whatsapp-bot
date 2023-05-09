@@ -1,7 +1,7 @@
 'use strict';
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
-import { sdrAction, titleCase } from '../../routes';
+import { titleCase } from '../../routes';
 
 export default async function selectDestination(recipientPhone, textMessage, res, message_id) {
   connection.query(
@@ -52,4 +52,22 @@ export default async function selectDestination(recipientPhone, textMessage, res
       }
     }
   );
+}
+
+function sdrAction(message, recipientPhone) {
+  let flag = 0;
+  connection.query(
+      `UPDATE whatsapp_cloud SET destination_region = '${message}' WHERE phone_no = '${recipientPhone}';`,
+      (err, res, fields) => {
+          if (err) flag = 1;
+      }
+  );
+
+  connection.query(
+      `UPDATE whatsapp_cloud SET latest_question = 'select pickup destination' WHERE phone_no = '${recipientPhone}';`,
+      (err, res, fields) => {
+          if (err) flag = 1;
+      }
+  );
+  return !Boolean(flag);
 }
