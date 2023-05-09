@@ -1,6 +1,5 @@
 'use strict';
 import Whatsapp from '../../config/whatsapp';
-import { stcAction } from '../../routes';
 
 export default async function selectContainerType(typeOfMsg, incomingMessage, recipientPhone, message_id, res) {
 

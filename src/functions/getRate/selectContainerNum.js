@@ -1,7 +1,6 @@
 'use strict';
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
-import { ncAction } from '../../routes';
 
 export default async function selectContainerNum(recipientPhone, textMessage, message_id, res) {
   connection.query(

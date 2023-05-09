@@ -37,7 +37,7 @@ function _selectDestination() {
                       _context3.next = 10;
                       break;
                     }
-                    (0, _routes.sdrAction)(textMessage, recipientPhone);
+                    sdrAction(textMessage, recipientPhone);
                     // send "select pickup destination" + pickup destinations (list)
                     message = '';
                     _db["default"].query("SELECT destination_region FROM whatsapp_cloud WHERE phone_no = '".concat(recipientPhone, "'"), /*#__PURE__*/function () {
@@ -116,5 +116,15 @@ function _selectDestination() {
     }, _callee4);
   }));
   return _selectDestination.apply(this, arguments);
+}
+function sdrAction(message, recipientPhone) {
+  var flag = 0;
+  _db["default"].query("UPDATE whatsapp_cloud SET destination_region = '".concat(message, "' WHERE phone_no = '").concat(recipientPhone, "';"), function (err, res, fields) {
+    if (err) flag = 1;
+  });
+  _db["default"].query("UPDATE whatsapp_cloud SET latest_question = 'select pickup destination' WHERE phone_no = '".concat(recipientPhone, "';"), function (err, res, fields) {
+    if (err) flag = 1;
+  });
+  return !Boolean(flag);
 }
 //# sourceMappingURL=selectDestination.js.map

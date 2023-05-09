@@ -1,7 +1,6 @@
 'use strict';
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
-import { spdAction } from '../../routes';
 
 export default async function selectPickup(recipientPhone, textMessage, message_id, res) {
   connection.query(

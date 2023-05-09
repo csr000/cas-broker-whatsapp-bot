@@ -1,8 +1,8 @@
-import getRate from '../functions/getRate';
-import selectDestination from '../functions/getRate/selectDestination';
-import selectPickup from '../functions/getRate/selectPickup';
-import selectContainerType from '../functions/getRate/selectContainerType';
-import selectContainerNum from '../functions/getRate/selectContainerNum';
+import getRate from '.';
+import selectDestination from './selectDestination';
+import selectPickup from './selectPickup';
+import selectContainerType from './selectContainerType';
+import selectContainerNum from './selectContainerNum';
 
 export default async function computeGetRate(
     typeOfMsg,

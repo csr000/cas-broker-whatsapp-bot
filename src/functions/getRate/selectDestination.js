@@ -1,7 +1,7 @@
 'use strict';
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
-import { sdrAction, titleCase } from '../../routes';
+import { titleCase } from '../../routes';
 
 export default async function selectDestination(recipientPhone, textMessage, res, message_id) {
   connection.query(

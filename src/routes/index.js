@@ -4,8 +4,9 @@ import Whatsapp from '../config/whatsapp';
 import connection from '../config/db';
 import testWaCallbackUrl from '../helpers/testWaCallbackUrl';
 import computeGetRate from '../functions/getRate/computeGetRate';
+import express from "express";
 
-const router = require('express').Router();
+const router = express.Router();
 
 router.get('/meta_wa_callbackurl', (req, res) => {
     try {
@@ -114,4 +115,5 @@ export function titleCase(str) {
     return splitStr.join(' ');
 }
 
-module.exports = router;
+// module.exports = router;
+export default router
