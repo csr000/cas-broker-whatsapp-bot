@@ -11,11 +11,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 _dotenv["default"].config();
 var port = process.env.PORT || 9000;
 console.log("process.env.PORT", process.env.PORT);
-
-// import indexRoutes from './routes'
-
-// let indexRoutes = require('./routes/index.js');
-
 var main = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     var app;
