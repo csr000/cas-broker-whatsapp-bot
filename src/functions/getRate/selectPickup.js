@@ -36,3 +36,42 @@ export default async function selectPickup(recipientPhone, textMessage, message_
     }
   );
 }
+
+function spdAction(message, recipientPhone) {
+    let flag = 0;
+
+    connection.query(
+        `SELECT destination_region FROM whatsapp_cloud WHERE phone_no = '${recipientPhone}'`,
+        async (err, rows, fields) => {
+            if (err) throw err;
+
+            connection.query(
+                `SELECT name FROM destinationrates WHERE region_id = '${rows[0].destination_region}'`,
+                async (err, rows, fields) => {
+                    if (err) throw err;
+
+                    let pickups = ['_'];
+
+                    for (let i = 0; i < rows.length; i++) {
+                        pickups.push(rows[i].name);
+                    }
+
+                    connection.query(
+                        `UPDATE whatsapp_cloud SET pickup_destination = '${pickups[message]}' WHERE phone_no = '${recipientPhone}';`,
+                        (err, res, fields) => {
+                            if (err) flag = 1;
+                        }
+                    );
+                }
+            );
+
+            connection.query(
+                `UPDATE whatsapp_cloud SET latest_question = 'select type of container' WHERE phone_no = '${recipientPhone}';`,
+                (err, res, fields) => {
+                    if (err) flag = 1;
+                }
+            );
+        }
+    );
+    return !Boolean(flag);
+}
