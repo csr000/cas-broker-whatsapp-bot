@@ -10,11 +10,6 @@ dotenv.config()
 const port = process.env.PORT || 9000;
 console.log("process.env.PORT", process.env.PORT)
 
-// import indexRoutes from './routes'
-
-// let indexRoutes = require('./routes/index.js');
-
-
 const main = async () => {
     const app = express();
     app.use(express.json());
