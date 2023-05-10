@@ -16,13 +16,11 @@ export default async function enterLoadID(
 
             if (latest_question === 'contact') {
                 if (sdrAction(textMessage, recipientPhone) === 'not-found') {
-                    // send "Enter your active number"
                     await Whatsapp.sendText({
                         recipientPhone: recipientPhone,
                         message: 'Number not found',
                     });
                 } else {
-                    // send "Enter your active number"
                     await Whatsapp.sendText({
                         recipientPhone: recipientPhone,
                         message: 'Enter Load ID',

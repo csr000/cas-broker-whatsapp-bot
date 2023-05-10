@@ -16,7 +16,6 @@ export default async function enterNumberOfTruckNeeded(
 
             if (latest_question === 'loading format') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Enter the number of trucks needed',

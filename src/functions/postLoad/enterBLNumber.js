@@ -16,7 +16,6 @@ export default async function enterBLNumber(
 
             if (latest_question === 'email') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Enter Bill of Lading number',

@@ -16,10 +16,9 @@ export default async function final(
 
             if (latest_question === 't and c') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
-                    message: 'Enter your active number',
+                    message: 'Load Posted Successful, here\'s your load ID: xxxxxxxxxxxx',
                 });
 
                 await Whatsapp.markMessageAsRead({

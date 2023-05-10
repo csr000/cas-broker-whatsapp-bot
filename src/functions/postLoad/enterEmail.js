@@ -16,7 +16,6 @@ export default async function enterContact(
 
             if (latest_question === 'contact') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Enter your active email',

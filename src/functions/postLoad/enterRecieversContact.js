@@ -16,7 +16,6 @@ export default async function enterRecieversContact(
 
             if (latest_question === 'pickup date') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Enter the reciever\'s number',

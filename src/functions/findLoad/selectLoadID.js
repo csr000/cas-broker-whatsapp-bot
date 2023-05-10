@@ -16,10 +16,9 @@ export default async function selectLoadID(
 
             if (latest_question === 'transaction type') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
-                    message: 'Enter your active number',
+                    message: 'Enter Load ID',
                 });
 
                 await Whatsapp.markMessageAsRead({
