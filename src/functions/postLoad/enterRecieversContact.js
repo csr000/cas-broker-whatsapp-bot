@@ -2,7 +2,7 @@
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
 
-export default async function enterContact(
+export default async function enterRecieversContact(
     recipientPhone,
     textMessage,
     res,
@@ -19,7 +19,7 @@ export default async function enterContact(
                 // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
-                    message: 'Enter your active number',
+                    message: 'Enter the reciever\'s number',
                 });
 
                 await Whatsapp.markMessageAsRead({

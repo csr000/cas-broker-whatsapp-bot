@@ -2,7 +2,7 @@
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
 
-export default async function enterContact(
+export default async function enterPickupDate(
     recipientPhone,
     textMessage,
     res,
@@ -19,7 +19,7 @@ export default async function enterContact(
                 // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
-                    message: 'Enter your active number',
+                    message: 'Enter pickup date \n\n format: dd/mm/yyyy \neg: 30/01/2023',
                 });
 
                 await Whatsapp.markMessageAsRead({

@@ -1,3 +1,9 @@
+import enterContact from "./enterContact";
+import enterLoadID from "./enterLoadID";
+import enterTruckNumber from "./enterTruckNumber";
+import final from "./final";
+import selectLoadID from "./selectLoadID";
+
 export default async function computeGetRate(
     recipientPhone,
     message_id,

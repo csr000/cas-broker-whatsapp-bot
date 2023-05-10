@@ -19,7 +19,7 @@ export default async function enterContact(
                 // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
-                    message: 'Enter your active number',
+                    message: 'Enter your active email',
                 });
 
                 await Whatsapp.markMessageAsRead({

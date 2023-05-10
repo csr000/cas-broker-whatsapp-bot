@@ -1,6 +1,14 @@
 import selectTransactionType from './selectTransactionType';
 import enterContact from './enterContact';
 import enterEmail from './enterEmail';
+import enterBLNumber from './enterBLNumber';
+import enterDestinationCity from './enterDestinationCity';
+import selectLoadingFormat from './selectLoadingFormat';
+import enterNumberOfTruckNeeded from './enterNumberOfTruckNeeded';
+import enterPickupDate from './enterPickupDate';
+import enterRecieversContact from './enterRecieversContact';
+import selectT_and_C from './selectT_and_C';
+import final from './final';
 
 export default async function computePostLoad(
     recipientPhone,

@@ -2,7 +2,7 @@
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
 
-export default async function enterContact(
+export default async function enterLoadID(
     recipientPhone,
     textMessage,
     res,

@@ -2,7 +2,7 @@
 import Whatsapp from '../../config/whatsapp';
 import connection from '../../config/db';
 
-export default async function (recipientPhone, message_id, res) {
+export default async function enterContact(recipientPhone, message_id, res) {
     // update latest question
     connection.query(
         `UPDATE post_load SET latest_question = 'contact' WHERE phone_no = '${recipientPhone}';`,

@@ -14,10 +14,7 @@ export default async function (recipientPhone, message_id, res) {
     // send "select transaction type" + transaction types (list)
     await Whatsapp.sendText({
         recipientPhone: recipientPhone,
-        message: `Select Transaction type\n\n
-            1. Pick up Import \n
-            2. Drop off Export \n
-            `,
+        message: `Select Transaction type \n1. Pick up Import \n2. Drop off Export`,
     });
 
     await Whatsapp.markMessageAsRead({
