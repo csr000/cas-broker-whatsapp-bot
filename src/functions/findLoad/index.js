@@ -15,7 +15,7 @@ export default async function (
     message_id,
     res
 ) {
-    if (typeOfMsg === 'simple_button_message' && buttonReplyID === 'get_rate') {
+    if (typeOfMsg === 'simple_button_message' && buttonReplyID === 'find_load') {
         // update latest question
         connection.query(
             `UPDATE whatsapp_cloud SET latest_question = 'select destination region' WHERE phone_no = '${recipientPhone}';`,
