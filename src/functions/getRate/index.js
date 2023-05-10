@@ -9,46 +9,39 @@ import { titleCase } from '../../routes';
 */
 
 export default async function (
-    typeOfMsg,
-    buttonReplyID,
     recipientPhone,
     message_id,
     res
 ) {
-    if (typeOfMsg === 'simple_button_message' && buttonReplyID === 'get_rate') {
-        // update latest question
-        connection.query(
-            `UPDATE whatsapp_cloud SET latest_question = 'select destination region' WHERE phone_no = '${recipientPhone}';`,
-            (err, res, fields) => {
-                if (err) throw err;
-            }
-        );
+    // update latest question
+    connection.query(
+        `UPDATE whatsapp_cloud SET latest_question = 'select destination region' WHERE phone_no = '${recipientPhone}';`,
+        (err, res, fields) => {
+            if (err) throw err;
+        }
+    );
 
-        // send "select destination region" + destination regions (list)
-        let message = '';
-        connection.query(
-            `SELECT name FROM regions`,
-            async (err, rows, fields) => {
-                if (err) throw err;
-                rows = JSON.parse(JSON.stringify(rows));
-                for (let i = 0; i < rows.length; i++) {
-                    message = message.concat(
-                        `${i + 1}. ${titleCase(
-                            rows[i].name.toLowerCase().replace(' region', '')
-                        )}\n`
-                    );
-                }
+    // send "select destination region" + destination regions (list)
+    let message = '';
+    connection.query(`SELECT name FROM regions`, async (err, rows, fields) => {
+        if (err) throw err;
+        rows = JSON.parse(JSON.stringify(rows));
+        for (let i = 0; i < rows.length; i++) {
+            message = message.concat(
+                `${i + 1}. ${titleCase(
+                    rows[i].name.toLowerCase().replace(' region', '')
+                )}\n`
+            );
+        }
 
-                await Whatsapp.sendText({
-                    recipientPhone: recipientPhone,
-                    message: 'Select destination region\n\n' + message,
-                });
-            }
-        );
-        await Whatsapp.markMessageAsRead({
-            message_id,
+        await Whatsapp.sendText({
+            recipientPhone: recipientPhone,
+            message: 'Select destination region\n\n' + message,
         });
-        // break
-        return res.sendStatus(200);
-    }
+    });
+    await Whatsapp.markMessageAsRead({
+        message_id,
+    });
+    // break
+    return res.sendStatus(200);
 }

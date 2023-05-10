@@ -4,7 +4,8 @@ import Whatsapp from '../config/whatsapp';
 import connection from '../config/db';
 import testWaCallbackUrl from '../helpers/testWaCallbackUrl';
 import computeGetRate from '../functions/getRate/computeGetRate';
-import express from "express";
+import express from 'express';
+import computePostLoad from '../functions/postLoad/computePostLoad';
 
 const router = express.Router();
 
@@ -53,6 +54,19 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         }
                     }
                 );
+                connection.query(
+                    `INSERT INTO post_load (phone_no, username) VALUES ('${recipientPhone}', '${recipientName}');`,
+                    (err, res, fields) => {
+                        if (err) {
+                            connection.query(
+                                `UPDATE post_load SET latest_question = 'new' WHERE phone_no = '${recipientPhone}';`,
+                                (err, res, fields) => {
+                                    if (err) throw err;
+                                }
+                            );
+                        }
+                    }
+                );
 
                 await Whatsapp.sendSimpleButtons({
                     message: `Welcome to CAS BROKER, ${recipientName}.\nWhat do you want to do?`,
@@ -83,16 +97,38 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
             }
             // End if msg === "hi" ////////////////////////////////////////////////////////////////////////
 
+            if (
+                typeOfMsg === 'simple_button_message' &&
+                incomingMessage.button_reply.id === 'get_rate'
+            ) {
+                // button_reply == "get_rate"
+                await computeGetRate(
+                    recipientPhone,
+                    message_id,
+                    res,
+                    textMessage
+                );
+            } else if (
+                typeOfMsg === 'simple_button_message' &&
+                incomingMessage.button_reply.id === 'post_load'
+            ) {
+                // button_reply == "post_load"
+                await computePostLoad(
+                    recipientPhone,
+                    message_id,
+                    res,
+                    textMessage
+                );
+            }
             //////////////////////  button_reply == "get_rate"  //////////////////////////////////////////////
-            await computeGetRate(
-                typeOfMsg,
-                incomingMessage,
-                recipientPhone,
-                message_id,
-                res,
-                textMessage
-            );
-            /////////////////////////////////////////////////////////////////////////////////////////
+            // await computeFindLoad(
+            //     typeOfMsg,
+            //     incomingMessage,
+            //     recipientPhone,
+            //     message_id,
+            //     res,
+            //     textMessage
+            // );
         }
         return res.sendStatus(200);
     } catch (error) {
@@ -116,4 +152,4 @@ export function titleCase(str) {
 }
 
 // module.exports = router;
-export default router
+export default router;

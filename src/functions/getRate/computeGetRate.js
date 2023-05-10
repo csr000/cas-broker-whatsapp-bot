@@ -5,20 +5,12 @@ import selectContainerType from './selectContainerType';
 import selectContainerNum from './selectContainerNum';
 
 export default async function computeGetRate(
-    typeOfMsg,
-    incomingMessage,
     recipientPhone,
     message_id,
     res,
     textMessage
 ) {
-    await getRate(
-        typeOfMsg,
-        incomingMessage.button_reply.id,
-        recipientPhone,
-        message_id,
-        res
-    );
+    await getRate(recipientPhone, message_id, res);
     /////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////  if latest_question == "select destination region" ///////////////////////////
     await selectDestination(recipientPhone, textMessage, res, message_id);
