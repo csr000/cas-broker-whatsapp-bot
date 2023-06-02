@@ -16,7 +16,6 @@ export default async function enterDestinationCity(
 
             if (latest_question === 'bl number') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Enter Destination City',

@@ -16,7 +16,6 @@ export default async function selectLoadingFormat(
 
             if (latest_question === 'destination city') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Select loading format \n1. 1x20 \n2. 2x20 \n3. 1x40',

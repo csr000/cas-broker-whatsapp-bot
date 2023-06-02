@@ -6,6 +6,8 @@ import testWaCallbackUrl from "../helpers/testWaCallbackUrl";
 import computeGetRate from "../functions/getRate/computeGetRate";
 import express from "express";
 import computePostLoad from "../functions/postLoad/computePostLoad";
+import computeFindLoad from "../functions/findLoad/computeFindLoad";
+
 
 const router = express.Router();
 
@@ -109,6 +111,17 @@ router.post("/meta_wa_callbackurl", async (req, res) => {
         incomingMessage,
       });
 
+      // button_reply == "find_load"
+      await computeFindLoad({
+        typeOfMsg,
+        buttonReplyID: incomingMessage.button_reply && incomingMessage.button_reply.id,
+        recipientPhone,
+        message_id,
+        res,
+        textMessage,
+        incomingMessage,
+      });
+      
       // button_reply == "post_load"
       await computePostLoad({
         typeOfMsg,
@@ -120,15 +133,7 @@ router.post("/meta_wa_callbackurl", async (req, res) => {
         incomingMessage,
       });
 
-      //////////////////////  button_reply == "get_rate"  //////////////////////////////////////////////
-      // await computeFindLoad(
-      //     typeOfMsg,
-      //     incomingMessage,
-      //     recipientPhone,
-      //     message_id,
-      //     res,
-      //     textMessage
-      // );
+     
     }
     return res.sendStatus(200);
   } catch (error) {

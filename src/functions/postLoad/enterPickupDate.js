@@ -16,7 +16,6 @@ export default async function enterPickupDate(
 
             if (latest_question === 'number of truck needed') {
                 sdrAction(textMessage, recipientPhone);
-                // send "Enter your active number"
                 await Whatsapp.sendText({
                     recipientPhone: recipientPhone,
                     message: 'Enter pickup date \n\n format: dd/mm/yyyy \neg: 30/01/2023',
