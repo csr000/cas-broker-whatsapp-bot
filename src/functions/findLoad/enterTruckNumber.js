@@ -14,6 +14,7 @@ export default async function enterLoadID(
       if (err) throw err;
       const { latest_question } = rows[0];
 
+
       if (latest_question === "find_load load id") {
         sdrAction(textMessage, recipientPhone)
           .then(async (result) => {
@@ -28,6 +29,7 @@ export default async function enterLoadID(
                 recipientPhone: recipientPhone,
                 message: "Enter truck number",
               });
+
             }
           })
           .catch((err) => {

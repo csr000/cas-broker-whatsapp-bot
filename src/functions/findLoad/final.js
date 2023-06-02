@@ -14,6 +14,7 @@ export default async function final(
       if (err) throw err;
       const { latest_question, load_id } = rows[0];
 
+
       if (latest_question === "find_load truck no") {
         if (
           ["GN32423", "GR55518", "NR456719", "AS22223", "BA171720"].includes(

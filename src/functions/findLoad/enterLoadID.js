@@ -14,6 +14,7 @@ export default async function enterLoadID(
       if (err) throw err;
       const { latest_question } = rows[0];
 
+
       if (latest_question === "find_load contact") {
         sdrAction(textMessage, recipientPhone)
           .then(async (result) => {
